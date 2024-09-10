@@ -1,0 +1,31 @@
+<div class="game-board">
+    <div *ngFor="let card of cards" class="card" (click)="flipCard(card)">
+        <div class="card-inner" [class.flipped]="card.flipped || card.matched">
+            <div class="card-front">
+                <img src="/img/Logo.png" alt="logo" class="card-logo">
+            </div>
+            <div class="card-back">
+                <img [src]="card.image" alt="card image" class="card-image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4 container">
+    <p>Tiempo: {{ timeTaken }} segundos</p>
+    <p>Puntaje: {{ score }}</p>
+    <button (click)="startGame()" class="btn btn-primary" [disabled]="gameInProgress">Iniciar Juego</button>
+    <button (click)="resetGame()" class="btn btn-secondary ms-2">Reiniciar</button>
+    <button (click)="togglePause()" class="btn btn-info ms-2">{{ isPaused ? 'Reanudar' : 'Pausar' }}</button>
+</div>
+
+<!-- <form #gameForm="ngForm" (ngSubmit)="startGame()" class="mt-4 container">
+    <div class="mb-3">
+        <select id="pairs" [(ngModel)]="totalPairs" name="pairs" class="form-select" required>
+            <option *ngFor="let num of [6, 8, 10]" [value]="num">{{ num }}</option>
+        </select><label for="pairs" class="form-label">Número de Pares</label>
+    
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!gameForm.valid">Iniciar Juego</button>
+    <button type="button" class="btn btn-secondary ms-2" (click)="resetGame()">Reiniciar</button>
+</form> -->
